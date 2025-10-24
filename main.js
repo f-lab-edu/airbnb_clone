@@ -1,8 +1,11 @@
+import { format } from "date-fns"; // date-fns에서 format 함수만 가져와요
 import { emojis } from "./emoji.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
-  const formattedDate = dateFns.format(today, "MMMM d, yyyy");
+
+  // date-fns 모듈에서 가져온 format 함수를 호출해요
+  const formattedDate = format(today, "MMMM d, yyyy");
   document.getElementById("dateDisplay").textContent = formattedDate;
 
   showRandomEmoji();
