@@ -1,3 +1,5 @@
+import { emojis } from "./emoji.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
   const formattedDate = dateFns.format(today, "MMMM d, yyyy");
