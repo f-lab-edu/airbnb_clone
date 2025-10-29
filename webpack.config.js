@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -48,4 +49,11 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js", ".tsx"], // 파일을 import할 때 확장자를 생략할 수 있어요. TypeScript와 JavaScript를 혼용하는 프로젝트에서 설정해두면 좋아요.
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html", // 템플릿 HTML
+      filename: "index.html", // 출력될 HTML 파일 이름
+      inject: true, // <script> 태그 자동 삽입
+    }),
+  ],
 };
