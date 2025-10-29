@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import React from "react";
+import logo from "./assets/logo.svg";
 import { emojis } from "./emoji";
 import "./style.css";
 
@@ -14,7 +15,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <img src="./assets/logo.svg" alt="Logo" className="logo"></img>
+      <img src={logo} alt="Logo" className="logo" />
       <h1>Emoji of the Day</h1>
       <div className="date-display">{format(new Date(), "MMMM d, yyyy")}</div>
       <div className="emoji-container">

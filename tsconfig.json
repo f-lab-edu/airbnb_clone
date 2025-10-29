@@ -4,10 +4,10 @@
     "module": "esnext",
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "dist"],
-  "jsx": "react", // jSX를 React 문법으로 변환
-  "esModuleInterop": true // React를 ESM으로 import할 수 있게 해줌(CommonJS라이브러리를 ES6모듈처럼 import문으로 불러올 수 있게 해줌)
+  "include": ["./**/*.ts", "./**/*.tsx", "global.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }
