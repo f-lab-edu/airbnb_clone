@@ -1,11 +1,11 @@
 import { format } from "date-fns";
-import React from "react";
+import { useState } from "react";
 import logo from "./assets/logo.svg";
 import { emojis } from "./emoji";
 import "./style.css";
 
 const App = () => {
-  const [selectedEmoji, setSelectedEmoji] = React.useState(emojis[0]);
+  const [selectedEmoji, setSelectedEmoji] = useState(emojis[0]);
 
   // main.ts에 있던 showRandomEmoji 함수를 가져오되, React 상태에 저장하도록 수정했어요
   const showRandomEmoji = () => {

@@ -18,7 +18,7 @@ module.exports = {
             options: {
               presets: [
                 "@babel/preset-env", // 최신 JS 문법을 변환
-                "@babel/preset-react", // JSX를 변환
+                ["@babel/preset-react", { runtime: "automatic" }], // JSX를  JSX Transform 형식으로 변환(17+)
                 "@babel/preset-typescript", // 타입스크립트를 변환
               ],
             },
