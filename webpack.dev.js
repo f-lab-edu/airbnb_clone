@@ -11,7 +11,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"], // 개발: style-loader
+        use: ["style-loader", "css-loader", "postcss-loader"], // 개발: style-loader
       },
     ],
   },

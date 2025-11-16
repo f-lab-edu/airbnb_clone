@@ -15,6 +15,7 @@ module.exports = merge(common, {
         use: [
           MiniCssExtractPlugin.loader, // 운영: CSS 파일로 추출
           "css-loader",
+          "postcss-loader",
         ],
       },
     ],
