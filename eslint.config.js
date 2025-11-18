@@ -38,6 +38,6 @@ module.exports = tseslint.config(
     },
   },
   {
-    ignores: ["**/*.config.js"],
+    ignores: ["**/*.config.js", "webpack.*.js"],
   }
 );
