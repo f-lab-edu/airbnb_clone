@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = merge(common, {
   mode: "production",
@@ -23,6 +24,9 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css", // CSS 파일명
+    }),
+    new Dotenv({
+      path: "./.env.production", // 프로덕션 환경 변수 파일
     }),
   ],
 });
