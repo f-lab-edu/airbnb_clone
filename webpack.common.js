@@ -41,6 +41,11 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js", ".tsx"], // 파일을 import할 때 확장자를 생략할 수 있어요. TypeScript와 JavaScript를 혼용하는 프로젝트에서 설정해두면 좋아요.
+    alias: {
+      "@pages": path.resolve(__dirname, "src/pages"),
+      "@app": path.resolve(__dirname, "src/app"),
+      "@": path.resolve(__dirname, "src"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

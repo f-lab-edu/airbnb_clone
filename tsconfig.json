@@ -6,7 +6,13 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["src/pages/*"],
+      "@app/*": ["src/app/*"],
+      "@/*": ["src/*"]
+    }
   },
   "include": ["./**/*.ts", "./**/*.tsx", "global.d.ts"],
   "exclude": ["node_modules", "dist"]
