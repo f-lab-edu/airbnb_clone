@@ -1,11 +1,24 @@
 import { format } from "date-fns";
-import { type Movie } from "../type";
+import { TabType, type Movie } from "../type";
+import { useMovieList } from "../use-movie-list";
+import { MovieListError } from "./movie-list-error";
+import { MovieListLoading } from "./movie-list-loading";
 
 type MovieListProps = {
-  movies: Movie[];
+  activeTab: TabType;
 };
 
-export const MovieList = ({ movies }: MovieListProps) => {
+export const MovieList = ({ activeTab }: MovieListProps) => {
+  const { movies, loading, error } = useMovieList(activeTab);
+
+  if (loading) {
+    return <MovieListLoading />;
+  }
+
+  if (error) {
+    return <MovieListError error={error} />;
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       {movies.map((movie) => (

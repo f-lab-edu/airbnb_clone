@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { MovieList } from "./components/movie-list";
-import { MovieListEmpty } from "./components/movie-list-empty";
-import { MovieListError } from "./components/movie-list-error";
-import { MovieListLoading } from "./components/movie-list-loading";
+
 import { Tabs } from "./components/tabs";
 import { type TabType } from "./type";
-import { useMovieList } from "./use-movie-list";
 
 const tabs: { id: TabType; label: string }[] = [
   { id: "now_playing", label: "Now Playing" },
@@ -16,7 +13,6 @@ const tabs: { id: TabType; label: string }[] = [
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<TabType>("now_playing");
-  const { movies, loading, error } = useMovieList(activeTab);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -25,15 +21,7 @@ export const HomePage = () => {
 
         <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
 
-        {loading && <MovieListLoading />}
-
-        {error && <MovieListError error={error} />}
-
-        {!loading && !error && movies.length > 0 && (
-          <MovieList movies={movies} />
-        )}
-
-        {!loading && !error && movies.length === 0 && <MovieListEmpty />}
+        <MovieList activeTab={activeTab} />
       </div>
     </div>
   );
