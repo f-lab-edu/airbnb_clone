@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/lib/api";
+import { axiosInstance } from "@lib/api";
 import { type MovieListResponse, type TabType } from "./type";
 
 export class MovieListAPI {

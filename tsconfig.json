@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
+      "@lib/*": ["src/lib/*"],
       "@pages/*": ["src/pages/*"],
       "@app/*": ["src/app/*"],
       "@/*": ["src/*"]
