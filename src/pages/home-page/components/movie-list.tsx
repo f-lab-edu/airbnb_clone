@@ -1,11 +1,11 @@
+import { type Movie, type MovieType } from "@domains/movies/type";
 import { format } from "date-fns";
-import { TabType, type Movie } from "../type";
 import { useMovieList } from "../use-movie-list";
 import { MovieListError } from "./movie-list-error";
 import { MovieListLoading } from "./movie-list-loading";
 
 type MovieListProps = {
-  activeTab: TabType;
+  activeTab: MovieType;
 };
 
 export const MovieList = ({ activeTab }: MovieListProps) => {

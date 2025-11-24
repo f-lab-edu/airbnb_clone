@@ -2,10 +2,10 @@ import { Layout } from "@components/layout";
 import { useState } from "react";
 import { MovieList } from "./components/movie-list";
 
+import { type MovieType } from "@domains/movies";
 import { Tabs } from "./components/tabs";
-import { type TabType } from "./type";
 
-const tabs: { id: TabType; label: string }[] = [
+const tabs: { id: MovieType; label: string }[] = [
   { id: "now_playing", label: "Now Playing" },
   { id: "popular", label: "Popular" },
   { id: "top_rated", label: "Top Rated" },
@@ -13,7 +13,7 @@ const tabs: { id: TabType; label: string }[] = [
 ];
 
 export const HomePage = () => {
-  const [activeTab, setActiveTab] = useState<TabType>("now_playing");
+  const [activeTab, setActiveTab] = useState<MovieType>("now_playing");
 
   return (
     <Layout>
