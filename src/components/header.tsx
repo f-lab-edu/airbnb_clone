@@ -52,7 +52,10 @@ export const Header = () => {
           </button>
 
           {/* Search */}
-          <form className="flex-1 max-w-2xl mx-4 lg:mx-8">
+          <form
+            className="flex-1 max-w-2xl mx-4 lg:mx-8"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <div className="relative">
               <input
                 type="search"
