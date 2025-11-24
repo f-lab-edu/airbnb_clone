@@ -1,9 +1,5 @@
 import { MoviesAPI } from "@domains/movies/api";
-import {
-  type Movie,
-  type MovieListResponse,
-  type MovieType,
-} from "@domains/movies/type";
+import { type Movie, type MovieType } from "@domains/movies/type";
 import { useEffect, useState } from "react";
 
 export const useMovieList = (activeTab: MovieType) => {
@@ -16,8 +12,7 @@ export const useMovieList = (activeTab: MovieType) => {
       setLoading(true);
       setError(null);
       try {
-        const response: MovieListResponse =
-          await MoviesAPI.getMovies(activeTab);
+        const response = await MoviesAPI.getMovies(activeTab);
         setMovies(response.results);
       } catch (err) {
         setError("영화 데이터를 불러오는데 실패했습니다.");

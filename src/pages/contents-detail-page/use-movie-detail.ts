@@ -12,7 +12,7 @@ export const useMovieDetail = (id: number) => {
       setLoading(true);
       setError(null);
       try {
-        const response: MovieDetail = await MoviesAPI.getMovieDetail(id);
+        const response = await MoviesAPI.getMovieDetail(id);
         setMovieDetail(response);
       } catch {
         setError("영화 상세 정보를 불러오는데 실패했습니다.");
