@@ -1,5 +1,6 @@
 import { Movie } from "@domains/movies";
 import { format } from "date-fns";
+import { useNavigate } from "react-router";
 
 type SearchResultItemProps = {
   movie: Movie;
@@ -13,8 +14,17 @@ const getImageUrl = (posterPath: string | null) => {
 };
 
 export const SearchResultItem = ({ movie }: SearchResultItemProps) => {
+  const navigate = useNavigate();
+
+  const goDetailPage = () => {
+    navigate(`/contents/${movie.id}`);
+  };
+
   return (
-    <div className="flex items-center gap-4 p-3 rounded-lg bg-[#1a1a1a] hover:bg-[#252525] transition-colors cursor-pointer group">
+    <div
+      onClick={goDetailPage}
+      className="flex items-center gap-4 p-3 rounded-lg bg-[#1a1a1a] hover:bg-[#252525] transition-colors cursor-pointer group"
+    >
       <div className="shrink-0 w-16 h-24 sm:w-20 sm:h-28 overflow-hidden rounded bg-[#0D0D0D]">
         <img
           src={getImageUrl(movie.poster_path)}

@@ -1,5 +1,5 @@
 import { axiosInstance } from "@lib/api";
-import { type MovieListResponse, type MovieType } from "./type";
+import { MovieDetail, type MovieListResponse, type MovieType } from "./type";
 
 export class MoviesAPI {
   static async getMovies(
@@ -22,6 +22,13 @@ export class MoviesAPI {
         params: { query, language: "ko" },
       }
     );
+    return response.data;
+  }
+
+  static async getMovieDetail(id: number): Promise<MovieDetail> {
+    const response = await axiosInstance.get<MovieDetail>(`/movie/${id}`, {
+      params: { language: "ko" },
+    });
     return response.data;
   }
 }

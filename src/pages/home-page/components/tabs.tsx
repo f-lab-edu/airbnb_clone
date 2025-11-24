@@ -1,9 +1,9 @@
-import { type TabType } from "../type";
+import { MovieType } from "@domains/movies";
 
 type TabsProps = {
-  tabs: { id: TabType; label: string }[];
-  activeTab: TabType;
-  onTabChange: (tab: TabType) => void;
+  tabs: { id: MovieType; label: string }[];
+  activeTab: MovieType;
+  onTabChange: (tab: MovieType) => void;
 };
 
 export const Tabs = ({ tabs, activeTab, onTabChange }: TabsProps) => {

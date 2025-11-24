@@ -1,5 +1,6 @@
 import { type Movie, type MovieType } from "@domains/movies/type";
 import { format } from "date-fns";
+import { useNavigate } from "react-router";
 import { useMovieList } from "../use-movie-list";
 import { MovieListError } from "./movie-list-error";
 import { MovieListLoading } from "./movie-list-loading";
@@ -40,15 +41,21 @@ const getImageUrl = (posterPath: string | null) => {
 };
 
 const MovieItem = ({ movie }: MovieItemProps) => {
+  const navigate = useNavigate();
+
+  const goDetailPage = () => {
+    navigate(`/contents/${movie.id}`);
+  };
+
   return (
-    <div className="group cursor-pointer">
-      <div className="aspect-[2/3] overflow-hidden rounded-lg bg-[#1a1a1a] mb-2 relative">
+    <div className="group cursor-pointer" onClick={goDetailPage}>
+      <div className=" overflow-hidden rounded-lg bg-[#1a1a1a] mb-2 relative">
         <img
           src={getImageUrl(movie.poster_path)}
           alt={movie.title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="flex items-center gap-2 text-white text-xs font-medium">
             <span className="flex items-center gap-1">
