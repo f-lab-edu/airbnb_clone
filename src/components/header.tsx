@@ -1,25 +1,42 @@
 import logoImage from "@app/assets/WATCHA_Logo_Main.png";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 
 export const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlQuery = searchParams.get("query") || "";
+  const [searchQuery, setSearchQuery] = useState(urlQuery);
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
+  // url query와 searchQuery 동기화
+  useEffect(() => {
+    setSearchQuery(urlQuery);
+  }, [urlQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    debounceTimerRef.current = setTimeout(() => {
+      setSearchParams({ query });
+    }, 300);
   };
 
   const handleLogoClick = () => {
     navigate("/");
     setSearchQuery("");
+  };
+
+  const handleSearchInputClick = () => {
+    if (!searchQuery) {
+      navigate("/search");
+      return;
+    }
   };
 
   return (
@@ -35,15 +52,13 @@ export const Header = () => {
           </button>
 
           {/* Search */}
-          <form
-            onSubmit={handleSearch}
-            className="flex-1 max-w-2xl mx-4 lg:mx-8"
-          >
+          <form className="flex-1 max-w-2xl mx-4 lg:mx-8">
             <div className="relative">
               <input
-                type="text"
+                type="search"
                 value={searchQuery}
                 onChange={handleInputChange}
+                onClick={handleSearchInputClick}
                 placeholder="영화를 검색하세요..."
                 className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-4 py-2 pl-10 text-white placeholder-gray-500 focus:outline-none focus:border-[#FF0558] focus:ring-1 focus:ring-[#FF0558] transition-all"
               />
@@ -62,9 +77,6 @@ export const Header = () => {
               </svg>
             </div>
           </form>
-
-          {/* Placeholder for future menu items */}
-          <div className="w-20"></div>
         </div>
       </div>
     </header>
