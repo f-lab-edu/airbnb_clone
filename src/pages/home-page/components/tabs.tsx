@@ -8,18 +8,21 @@ type TabsProps = {
 
 export const Tabs = ({ tabs, activeTab, onTabChange }: TabsProps) => {
   return (
-    <div className="border-b border-gray-200 mb-6">
-      <nav className="flex space-x-8" aria-label="Tabs">
+    <div className="sticky top-16 lg:top-20 z-40 bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-gray-800 mb-6 lg:mb-8 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+      <nav
+        className="flex space-x-4 lg:space-x-6 overflow-x-auto scrollbar-hide"
+        aria-label="Tabs"
+      >
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
             className={`
-              py-4 px-1 border-b-2 font-medium text-sm transition-colors
+              py-2 px-1 font-medium text-sm lg:text-base whitespace-nowrap transition-all duration-200
               ${
                 activeTab === tab.id
-                  ? "border-blue-500 text-blue-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  ? "text-white border-b-2 border-[#FF0558]"
+                  : "text-gray-400 hover:text-gray-300 border-b-2 border-transparent"
               }
             `}
           >

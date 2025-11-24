@@ -5,52 +5,50 @@
   src: url("./assets/Inter-Regular.woff2") format("woff2");
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  text-align: center;
-  max-width: 500px;
-  width: 100%;
+#root {
+  min-height: 100vh;
 }
 
-.logo {
-  max-width: 100px;
-  margin-bottom: 1rem;
+/* 왓챠 스타일 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 1rem;
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }
 
-.date-display {
-  color: #666;
-  margin-bottom: 2rem;
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
 }
 
-.emoji-container {
-  margin: 2rem 0;
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 
-.emoji {
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
+/* 스크롤바 숨김 유틸리티 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.emoji-name {
-  font-size: 1.2rem;
-  color: #555;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
