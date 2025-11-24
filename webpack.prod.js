@@ -2,6 +2,8 @@ const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require("path");
 
 module.exports = merge(common, {
   mode: "production",
@@ -27,6 +29,14 @@ module.exports = merge(common, {
     }),
     new Dotenv({
       path: "./.env.production", // 프로덕션 환경 변수 파일
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
     }),
   ],
 });

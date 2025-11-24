@@ -1,3 +1,4 @@
+import logoImage from "@app/assets/WATCHA_Logo_Main.png";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -28,9 +29,9 @@ export const Header = () => {
           {/* Logo */}
           <button
             onClick={handleLogoClick}
-            className="flex items-center space-x-2 text-white hover:text-[#FF0558] transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            <h1 className="text-xl lg:text-2xl font-bold">영화</h1>
+            <img src={logoImage} alt="왓챠" className="h-8 lg:h-10 w-auto" />
           </button>
 
           {/* Search */}

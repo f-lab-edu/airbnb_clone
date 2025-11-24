@@ -17,9 +17,15 @@ module.exports = merge(common, {
     ],
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
+    static: [
+      {
+        directory: path.join(__dirname, "dist"),
+        // publicPath: "/", // "/" 기본값 dist 폴더를 루트로 접근
+      },
+      {
+        directory: path.join(__dirname, "public"), // public 폴더를 루트로 접근
+      },
+    ],
     port: 3000,
     open: true,
     hot: true,
