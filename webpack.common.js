@@ -5,6 +5,7 @@ module.exports = {
   entry: "./main.tsx", // 웹팩이 읽기 시작할 파일을 .tsx로 변경
   output: {
     path: path.resolve(__dirname, "dist"), // 번들 파일이 어디에 저장될지
+    publicPath: "/",
     // filename은 dev/prod에서 각각 설정
   },
   module: {
