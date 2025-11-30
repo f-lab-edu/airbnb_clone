@@ -5,6 +5,7 @@ module.exports = {
   entry: "./main.tsx", // 웹팩이 읽기 시작할 파일을 .tsx로 변경
   output: {
     path: path.resolve(__dirname, "dist"), // 번들 파일이 어디에 저장될지
+    publicPath: "/",
     // filename은 dev/prod에서 각각 설정
   },
   module: {
@@ -41,6 +42,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js", ".tsx"], // 파일을 import할 때 확장자를 생략할 수 있어요. TypeScript와 JavaScript를 혼용하는 프로젝트에서 설정해두면 좋아요.
+    alias: {
+      "@lib": path.resolve(__dirname, "src/lib"),
+      "@domains": path.resolve(__dirname, "src/domains"),
+      "@pages": path.resolve(__dirname, "src/pages"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@app": path.resolve(__dirname, "src/app"),
+      "@": path.resolve(__dirname, "src"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
